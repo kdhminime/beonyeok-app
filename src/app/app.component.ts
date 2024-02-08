@@ -1,14 +1,14 @@
-import { Component, NgModule } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 // Import components
-import { SignUpDialogComponentComponent } from './components/sign-up-dialog-component/sign-up-dialog-component.component';
+import { SignUpDialogComponent } from './components/sign-up-dialog/sign-up-dialog.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, SignUpDialogComponentComponent],
+  imports: [CommonModule, RouterOutlet, SignUpDialogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
