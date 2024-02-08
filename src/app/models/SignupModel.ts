@@ -1,19 +1,31 @@
+import {
+  type SignUpOutput,
+  type SignInInput,
+  type SignUpInput,
+  type SignInOutput,
+  type SignOutInput,
+} from 'aws-amplify/auth';
 
 /**
  * Interface for the sign up parameters
  */
-interface SignUpInputModel {
-  username: string;
-  password: string;
+export interface SignUpInputModel extends SignUpInput {
   email: string;
-};
+}
 
 /**
  * Interface for the sign up response
  */
-interface SignUpOutputModel {
-  isSignUpComplete: boolean;
-  userId: string | undefined;
-  nextStep: string | undefined;};
+export interface SignUpOutputModel extends SignUpOutput {}
 
-export { SignUpInputModel, SignUpOutputModel };
+/**
+ * Interface for the sign in parameters
+ */
+export interface SignInInputModel extends SignInInput {}
+
+/**
+ * Interface for the sign in response
+ */
+export interface SignInOutputModel extends SignInOutput {}
+
+export interface signUpOutputModel extends SignOutInput {}
