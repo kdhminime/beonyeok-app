@@ -1,7 +1,9 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "resourceNameTruncated": "beonye433e8533",
+    "identityPoolName": "testAuthIdentityPool",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "beonye635c78b7",
     "userPoolName": "beonyeokapp",
     "autoVerifiedAttributes": [
       "email"
@@ -14,12 +16,11 @@
     "smsVerificationMessage": "Your verification code is {####}",
     "emailVerificationSubject": "Verification code: {####}",
     "emailVerificationMessage": "Verification code: {####}",
-    "defaultPasswordPolicy": true,
+    "defaultPasswordPolicy": false,
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [
-      "Requires Lowercase",
-      "Requires Uppercase",
-      "Requires Numbers"
+      "Requires Numbers",
+      "Requires Uppercase"
     ],
     "requiredAttributes": [
       "email"
@@ -29,19 +30,23 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "beonye433e8533_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "beonye635c78b7_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "433e8533",
+    "sharedId": "635c78b7",
     "resourceName": "beonyeokapp",
-    "authSelections": "userPoolOnly",
+    "authSelections": "identityPoolAndUserPool",
     "serviceName": "Cognito",
     "usernameAttributes": [
       "email"
     ],
     "useDefault": "manual",
     "userPoolGroups": false,
-    "userPoolGroupList": [],
+    "userPoolGroupList": [
+      "beonyeokUsers"
+    ],
     "adminQueries": false,
+    "thirdPartyAuth": false,
+    "authProviders": [],
     "usernameCaseSensitive": false,
     "useEnabledMfas": true,
     "authRoleArn": {
@@ -58,12 +63,6 @@
     },
     "breakCircularDependency": true,
     "dependsOn": [],
-    "triggers": {},
-    "hostedUI": false,
-    "authProviders": [],
-    "parentStack": {
-      "Ref": "AWS::StackId"
-    },
-    "permissions": []
+    "adminQueryGroup": "beonyeokUsers"
   }
 }

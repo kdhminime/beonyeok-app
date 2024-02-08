@@ -13,7 +13,17 @@
     },
     "categories": {
       "auth": {
-        "beonyeokapp": {}
+        "beonyeokapp": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "AdminQueriesbcb38b18": {
+          "deploymentBucketName": "amplify-amplifyc2939bee0fb84-staging-61410-deployment",
+          "s3Key": "amplify-builds/AdminQueriesbcb38b18-30674f447833536a4c7a-build.zip"
+        }
+      },
+      "api": {
+        "AdminQueries": {}
       }
     }
   }

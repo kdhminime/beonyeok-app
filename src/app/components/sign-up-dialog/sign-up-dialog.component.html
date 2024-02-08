@@ -9,9 +9,9 @@
     </div>
     <div class="input-container">
       <h3>E-mail</h3>
-      <input class="email-input" />
+      <input class="email-input" [(ngModel)]="email" />
       <h3>Password</h3>
-      <input class="password-input" type="password" />
+      <input class="password-input" type="password" [(ngModel)]="password" />
     </div>
     <div class="policy-container">
       <h3>Service policy</h3>
@@ -32,5 +32,5 @@
       </label>
     </div>
   </div>
-  <button class="confirm-button">Confirm</button>
+  <button (click)="signUp()" class="confirm-button">Confirm</button>
 </div>

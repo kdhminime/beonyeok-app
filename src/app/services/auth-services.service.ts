@@ -26,7 +26,7 @@ export class AuthServicesService {
    * @param signUpInfo the sign up information
    * @returns a promise of the sign up result
    */
-  async handleSignUp(
+  public async handleSignUp(
     signUpInput: SignUpInputModel
   ): Promise<SignUpOutput | null> {
     {
