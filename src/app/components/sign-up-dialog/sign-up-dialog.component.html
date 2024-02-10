@@ -1,19 +1,19 @@
 <div class="container">
-  <div class="content-container">
+  <div class="content-container" >
     <div class="image-container">
       <app-logo-image></app-logo-image>
     </div>
-    <div class="title-container">
+    <div class="title-container" [@slideInOut]="animationState">
       <h1>Create your account</h1>
       <p>I already have an account. <a>Log in</a></p>
     </div>
-    <div class="input-container">
+    <div class="input-container" [@slideInOut]="animationState">
       <h3>E-mail</h3>
       <input class="email-input" [(ngModel)]="email" />
       <h3>Password</h3>
       <input class="password-input" type="password" [(ngModel)]="password" />
     </div>
-    <div class="policy-container">
+    <div class="policy-container" [@slideInOut]="animationState">
       <h3>Service policy</h3>
       <div>
         <label>

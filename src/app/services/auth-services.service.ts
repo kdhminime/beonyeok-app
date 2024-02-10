@@ -28,10 +28,11 @@ export class AuthServicesService {
    */
   public async handleSignUp(
     signUpInput: SignUpInputModel
-  ): Promise<SignUpOutput | null> {
+  ): Promise<SignUpOutput> {
     {
+      let signUpOutput: SignUpOutputModel = {} as SignUpOutputModel;
       try {
-        const SignUpOutput: SignUpOutputModel = await signUp({
+        signUpOutput = await signUp({
           username: signUpInput.username,
           password: signUpInput.password,
           options: {
@@ -44,15 +45,15 @@ export class AuthServicesService {
         });
         console.log(
           'sign up complete: userId:',
-          SignUpOutput.userId,
+          signUpOutput.userId,
           'next step:',
-          SignUpOutput.nextStep
+          signUpOutput.nextStep
         );
-        return SignUpOutput;
       } catch (error) {
         console.log('error signing up:', error);
-        return null;
+      } finally {
       }
+      return signUpOutput;
     }
   }
 

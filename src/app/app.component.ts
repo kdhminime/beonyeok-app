@@ -13,5 +13,5 @@ import { SignUpDialogComponent } from './components/sign-up-dialog/sign-up-dialo
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'amplifyapp';
+  isLoading: boolean = false;
 }

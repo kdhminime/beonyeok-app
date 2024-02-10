@@ -27,5 +27,3 @@ export interface SignInInputModel extends SignInInput {}
  * Interface for the sign in response
  */
 export interface SignInOutputModel extends SignInOutput {}
-
-export interface signUpOutputModel extends SignOutInput {}

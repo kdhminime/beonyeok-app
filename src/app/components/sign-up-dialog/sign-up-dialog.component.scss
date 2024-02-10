@@ -5,29 +5,29 @@
   border-radius: 14px;
   box-shadow: 5px 4px 13.4px 0px rgba(0, 0, 0, 0.25);
   justify-content: center;
-  margin-top: 40px;  
+  margin-top: 10vh;  
 }
 
 .content-container{
-  height: 700px;
+  height: 800px;
   justify-content: center;
   display: grid;
   position: relative;
-  top: -100px;
+  top: -150px;
   grid-template-rows: 1fr 1.2fr 1.5fr 1fr;
-
+  overflow: hidden;
 }
 
 .image-container{
   position: relative;
-  top: -35px;
+  top: 10px;
   justify-content: center;
   display: grid;
 }
 
 .title-container{
   position: relative;
-  top: -30px;
+
   text-align: center;
   h1{
     font: 24px;
@@ -86,7 +86,7 @@
 
 .confirm-button{
   position: relative;
-  top: -130px;
+  top: -240px;
   left: 430px;
   justify-content: center;
   align-items: center;
