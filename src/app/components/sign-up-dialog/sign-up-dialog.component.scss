@@ -5,7 +5,7 @@
   border-radius: 14px;
   box-shadow: 5px 4px 13.4px 0px rgba(0, 0, 0, 0.25);
   justify-content: center;
-  margin-top: 10vh;  
+  margin-top: 13vh;  
 }
 
 .content-container{
@@ -14,7 +14,7 @@
   display: grid;
   position: relative;
   top: -150px;
-  grid-template-rows: 1fr 1.2fr 1.5fr 1fr;
+  grid-template-rows: 1fr 1.5fr 1.2fr 1fr;
   overflow: hidden;
 }
 
@@ -47,11 +47,12 @@
 
 .input-container{
   position: relative;
-  top: -80px;
+  top: -140px;
   display: grid;
   h3{
     font-size: 14px;
     font-weight: bold;
+    margin-bottom: -20px;
   }
   input{
     width: 501px;
@@ -63,12 +64,13 @@
     outline: none;
     padding-left: 10px;
     font-size: 16px;
+    margin-bottom: -20px;
   }
 }
 
 .policy-container{
   position: relative;
-  top: -70px;
+  top: -130px;
   display: grid;
   color: #7D7D7D;
   font-size: 16px;
