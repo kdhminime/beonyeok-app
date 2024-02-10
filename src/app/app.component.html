@@ -1,2 +1,8 @@
-<app-sign-up-dialog [(isLoading)]="isLoading"></app-sign-up-dialog>
-
+<ng-container *ngIf="dialogService.dialogStates$ | async as dialogStates">
+  <div *ngIf="dialogStates['signUpDialog']" class="overlay">
+    <app-sign-up-dialog *ngIf="dialogService.dialogStates$ | async as dialogState" ></app-sign-up-dialog>
+  </div>
+  <div *ngIf="dialogStates['signUpConfirmDialog']" class="overlay">
+    <app-sign-up-confirm-dialog *ngIf="dialogService.dialogStates$ | async as dialogState" ></app-sign-up-confirm-dialog>
+  </div>
+</ng-container>

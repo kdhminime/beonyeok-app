@@ -14,7 +14,7 @@ import {
   SignUpOutputModel,
   SignInInputModel,
   SignInOutputModel,
-} from '../models/SignupModel';
+} from '../../models/SignupModel';
 
 @Injectable({
   providedIn: 'root',
