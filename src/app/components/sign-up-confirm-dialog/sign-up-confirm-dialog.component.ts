@@ -27,8 +27,8 @@ import { LogoImageComponent } from '../logo-image/logo-image.component';
           opacity: 0,
         })
       ),
-      transition('in => out', animate('600ms ease-out')),
-      transition('out => in', animate('600ms ease-in')),
+      transition('in => out', animate('700ms ease-in')),
+      transition('out => in', animate('700ms ease-out')),
     ]),
   ],
 })
