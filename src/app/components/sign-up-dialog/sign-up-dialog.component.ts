@@ -42,8 +42,22 @@ import { SignUpOutput } from 'aws-amplify/auth';
           opacity: 0,
         })
       ),
-      transition('in => out', animate('600ms ease-out')),
-      transition('out => in', animate('600ms ease-in')),
+      transition('in => out', animate('500ms ease-out')),
+    ]),
+    trigger('shrinkHeight', [
+      state(
+        'out',
+        style({
+          height: '628px',
+        })
+      ),
+      state(
+        'shrinked',
+        style({
+          height: '458px',
+        })
+      ),
+      transition('out => shrinked', animate('500ms ease-out')),
     ]),
   ],
 })
@@ -66,6 +80,7 @@ export class SignUpDialogComponent {
 
   // animation variables
   public animationState: string = 'in';
+  public containerAnimationState: string = 'out';
 
   constructor(
     private authServiceHelper: AuthServicesService,
@@ -96,9 +111,14 @@ export class SignUpDialogComponent {
     // close after animation
     return new Promise((resolve) => {
       setTimeout(() => {
+        this.containerAnimationState = 'shrinked';
+      }, 600);
+
+      setTimeout(() => {
+        this.DialogService.openDialog('signUpConfirmDialog');
         this.DialogService.closeDialog(this.dialogKey, null);
         resolve();
-      }, 600);
+      }, 1000);
     });
   }
 }

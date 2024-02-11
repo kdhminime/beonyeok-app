@@ -12,37 +12,37 @@
       <div>
         <input
           (input)="onInput($event, 1)"
-          [(ngModel)]="input1"
+          [(ngModel)]="confirmCode[0]"
           maxlength="1"
           id="input1"
         />
         <input
           (input)="onInput($event, 2)"
-          [(ngModel)]="input2"
+          [(ngModel)]="confirmCode[1]"
           maxlength="1"
           id="input2"
         />
         <input
           (input)="onInput($event, 3)"
-          [(ngModel)]="input3"
+          [(ngModel)]="confirmCode[2]"
           maxlength="1"
           id="input3"
         />
         <input
           (input)="onInput($event, 4)"
-          [(ngModel)]="input4"
+          [(ngModel)]="confirmCode[3]"
           maxlength="1"
           id="input4"
         />
         <input
           (input)="onInput($event, 5)"
-          [(ngModel)]="input5"
+          [(ngModel)]="confirmCode[4]"
           maxlength="1"
           id="input5"
         />
         <input
           (input)="onInput($event, 6)"
-          [(ngModel)]="input6"
+          [(ngModel)]="confirmCode[5]"
           maxlength="1"
           id="input6"
         />
@@ -50,5 +50,5 @@
       <h4>You couldn’t get any Email from us?<a>Resend the code.</a></h4>
     </div>
   </div>
-  <button class="confirm-button" >Confirm</button>
+  <button class="confirm-button" *ngIf="isFilled()">Confirm</button>
 </div>

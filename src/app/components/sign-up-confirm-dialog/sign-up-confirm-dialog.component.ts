@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { trigger, state, style, transition, animate } from '@angular/animations';
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+} from '@angular/animations';
+import { CommonModule } from '@angular/common';
 
 // import components
 import { LogoImageComponent } from '../logo-image/logo-image.component';
@@ -8,7 +15,7 @@ import { LogoImageComponent } from '../logo-image/logo-image.component';
 @Component({
   selector: 'app-sign-up-confirm-dialog',
   standalone: true,
-  imports: [LogoImageComponent, FormsModule],
+  imports: [LogoImageComponent, FormsModule, CommonModule],
   templateUrl: './sign-up-confirm-dialog.component.html',
   styleUrl: './sign-up-confirm-dialog.component.scss',
   animations: [
@@ -27,40 +34,50 @@ import { LogoImageComponent } from '../logo-image/logo-image.component';
           opacity: 0,
         })
       ),
-      transition('in => out', animate('700ms ease-in')),
       transition('out => in', animate('700ms ease-out')),
     ]),
   ],
 })
 export class SignUpConfirmDialogComponent {
-  public input1 = '';
-  public input2 = '';
-  public input3 = '';
-  public input4 = '';
-  public input5 = '';
-  public input6 = '';
+  public confirmCode: string[] = ['', '', '', '', '', ''];
 
   public animationState: string = 'out';
 
   public ngOnInit(): void {
     setTimeout(() => {
       this.animationState = 'in';
-    } , 100);
+    }, 100);
   }
 
   public onInput(event: any, nextInput: number): void {
     const inputElement = event.target;
     const currentInputValue = inputElement.value;
 
+    let nextInputId: string = '';
+    let nextInputElement: HTMLInputElement;
 
     // Move to the next input if the current input is filled
     if (currentInputValue.length === 1) {
-      const nextInputId = `input${nextInput + 1}`;
-      const nextInputElement = document.getElementById(nextInputId) as HTMLInputElement;
+      nextInputId = `input${nextInput + 1}`;
+      nextInputElement = document.getElementById(
+        nextInputId
+      ) as HTMLInputElement;
+    } else {
+      nextInputId = `input${nextInput - 1}`;
+      nextInputElement = document.getElementById(
+        nextInputId
+      ) as HTMLInputElement;
+    }
 
-      if (nextInputElement) {
-        nextInputElement.focus();
-      }
+    if (nextInputElement) {
+      nextInputElement.focus();
+    }
+  }
+  public isFilled(): boolean {
+    if (this.confirmCode.join('').length === 6) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
