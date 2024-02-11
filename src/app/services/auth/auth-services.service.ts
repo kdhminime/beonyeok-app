@@ -21,6 +21,8 @@ import {
 })
 export class AuthServicesService {
   constructor() {}
+  
+  public email: string = '';
 
   /**
    * @param signUpInfo the sign up information
@@ -64,12 +66,14 @@ export class AuthServicesService {
   async handleSignUpConfirmation({
     username,
     confirmationCode,
-  }: ConfirmSignUpInput) {
+  }: ConfirmSignUpInput) : Promise<void> {
     try {
       const { isSignUpComplete, nextStep } = await confirmSignUp({
         username,
         confirmationCode,
       });
+      // handle sign-up confirmation steps
+      console.log('sign up complete:', isSignUpComplete, 'next step:', nextStep);
     } catch (error) {
       console.log('error confirming sign up', error);
     }

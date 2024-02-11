@@ -4,6 +4,7 @@ import {
   type SignUpInput,
   type SignInOutput,
   type SignOutInput,
+  type ConfirmSignUpInput,
 } from 'aws-amplify/auth';
 
 /**
@@ -27,3 +28,8 @@ export interface SignInInputModel extends SignInInput {}
  * Interface for the sign in response
  */
 export interface SignInOutputModel extends SignInOutput {}
+
+/**
+* Interface for the sign up confirmation parameters
+ */
+export interface SignUpConfirmationInputModel extends ConfirmSignUpInput {}

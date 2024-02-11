@@ -12,6 +12,13 @@ import { CommonModule } from '@angular/common';
 // import components
 import { LogoImageComponent } from '../logo-image/logo-image.component';
 
+// import services
+import { DialogService } from '../../services/dialog/dialog.service';
+import { AuthServicesService } from '../../services/auth/auth-services.service';
+
+// import models
+import { SignUpConfirmationInputModel } from '../../models/SignupModel';
+
 @Component({
   selector: 'app-sign-up-confirm-dialog',
   standalone: true,
@@ -40,14 +47,18 @@ import { LogoImageComponent } from '../logo-image/logo-image.component';
 })
 export class SignUpConfirmDialogComponent {
   public confirmCode: string[] = ['', '', '', '', '', ''];
-
   public animationState: string = 'out';
 
+  constructor(
+    public dialogService: DialogService,
+    public authService: AuthServicesService
+  ) {}
 
   /**
    * on init handle the animation state
    */
   public ngOnInit(): void {
+    console.log('receving email', this.authService.email);
     setTimeout(() => {
       this.animationState = 'in';
     }, 100);
@@ -60,32 +71,43 @@ export class SignUpConfirmDialogComponent {
    */
   public onInput(event: Event, nextInput: number): void {
     // Get the current input value
-    const inputElement : EventTarget | null = event.target;
-    
-    if(inputElement instanceof HTMLInputElement) {
-    const currentInputValue = inputElement.value;
-  
-    let nextInputId: string = '';
-    let nextInputElement: HTMLInputElement;
+    const inputElement: EventTarget | null = event.target;
 
-    // Move to the next input if the current input is filled
-    if (currentInputValue.length === 1) {
-      nextInputId = `input${nextInput + 1}`;
-      nextInputElement = document.getElementById(
-        nextInputId
-      ) as HTMLInputElement;
-    } else {
-      nextInputId = `input${nextInput - 1}`;
-      nextInputElement = document.getElementById(
-        nextInputId
-      ) as HTMLInputElement;
-    }
+    if (inputElement instanceof HTMLInputElement) {
+      const currentInputValue = inputElement.value;
 
-    if (nextInputElement) {
-      nextInputElement.focus();
+      let nextInputId: string = '';
+      let nextInputElement: HTMLInputElement;
+
+      // Move to the next input if the current input is filled
+      if (currentInputValue.length === 1) {
+        nextInputId = `input${nextInput + 1}`;
+        nextInputElement = document.getElementById(
+          nextInputId
+        ) as HTMLInputElement;
+      } else {
+        nextInputId = `input${nextInput - 1}`;
+        nextInputElement = document.getElementById(
+          nextInputId
+        ) as HTMLInputElement;
+      }
+
+      if (nextInputElement) {
+        nextInputElement.focus();
+      }
     }
   }
-}
+
+  public onPaste(event: ClipboardEvent): void {
+    if (event.clipboardData) {
+      const paste : string = event.clipboardData.getData('text');
+      const pasteArray : string[] = paste.split('');
+      for (let i = 0; i < pasteArray.length; i++) {
+        this.confirmCode[i] = pasteArray[i];
+      }
+    }
+  }
+
 
   /**
    * check if the confirm code is filled
@@ -97,5 +119,14 @@ export class SignUpConfirmDialogComponent {
     } else {
       return false;
     }
+  }
+
+  public async confirm(): Promise<void> {
+    const confirmationCode: string = this.confirmCode.join('');
+    const ConfirmSignUpInput: SignUpConfirmationInputModel = {
+      username: this.authService.email,
+      confirmationCode,
+    };
+    await this.authService.handleSignUpConfirmation(ConfirmSignUpInput);
   }
 }

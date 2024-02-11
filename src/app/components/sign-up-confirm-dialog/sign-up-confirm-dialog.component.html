@@ -11,6 +11,7 @@
       <h3>Verify code</h3>
       <div>
         <input
+          (paste)="onPaste($event)"
           (input)="onInput($event, 1)"
           [(ngModel)]="confirmCode[0]"
           maxlength="1"
@@ -50,5 +51,5 @@
       <h4>You couldn’t get any Email from us?<a>Resend the code.</a></h4>
     </div>
   </div>
-  <button class="confirm-button" *ngIf="isFilled()">Confirm</button>
+  <button class="confirm-button" *ngIf="isFilled()" (click)="confirm()">Confirm</button>
 </div>
