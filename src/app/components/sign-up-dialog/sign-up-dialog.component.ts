@@ -7,6 +7,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
+import AuthNextSignUpStep from 'aws-amplify/auth';
 
 // Import services
 import { AuthServicesService } from '../../services/auth/auth-services.service';
@@ -61,15 +62,11 @@ import { SignUpOutput } from 'aws-amplify/auth';
     ]),
   ],
 })
-export class SignUpDialogComponent {
-  @Input() public isLoading: boolean = false;
-  @Output() public isLoadingChange: EventEmitter<boolean> =
-    new EventEmitter<boolean>();
 
-  updateIsLoading(): void {
-    this.isLoading = !this.isLoading;
-    this.isLoadingChange.emit(this.isLoading);
-  }
+export class SignUpDialogComponent {
+
+  private signUpNextStep : any = AuthNextSignUpStep;
+
 
   // dialog key
   public dialogKey: string = 'signUpDialog';
@@ -89,24 +86,43 @@ export class SignUpDialogComponent {
     authServiceHelper = new AuthServicesService();
   }
 
+  /**
+   * handle the sign up process
+   * @returns void
+   */
   public async signUp(): Promise<void> {
-    // this.updateIsLoading();
-    // const signUpInput: SignUpInputModel = {
-    //   email: this.email,
-    //   password: this.password,
-    //   username: this.email,
-    // };
-    // const response : SignUpOutput | null =  await this.authServiceHelper.handleSignUp(signUpInput);
+
+    // build the sign up input
+    const signUpInput: SignUpInputModel = {
+      email: this.email,
+      password: this.password,
+      username: this.email,
+    };
+
+    // call the sign up helper
+    const response : SignUpOutput | null =  await this.authServiceHelper.handleSignUp(signUpInput);
     this.animationState = 'out';
-    this.closeDialog().then(() => {
-      this.openConfirmationDialog();
-    });
+
+    // if the sign up is complete, close the dialog and open the confirmation dialog
+    if(response.nextStep === this.signUpNextStep.confirmSignUp){
+      this.closeDialog().then(() => {
+        this.openConfirmationDialog();
+      });
+    }
   }
 
+  /**
+   * open the confirmation dialog
+   * @returns void
+   */
   private openConfirmationDialog(): void {
     this.DialogService.openDialog('signUpConfirmDialog');
   }
 
+  /**
+   * close the current dialog
+   * @returns void
+   */
   private async closeDialog(): Promise<void> {
     // close after animation
     return new Promise((resolve) => {
@@ -118,7 +134,7 @@ export class SignUpDialogComponent {
         this.DialogService.openDialog('signUpConfirmDialog');
         this.DialogService.closeDialog(this.dialogKey, null);
         resolve();
-      }, 1000);
+      }, 1100);
     });
   }
 }

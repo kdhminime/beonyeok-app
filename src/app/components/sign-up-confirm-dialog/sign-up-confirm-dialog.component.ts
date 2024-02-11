@@ -43,16 +43,28 @@ export class SignUpConfirmDialogComponent {
 
   public animationState: string = 'out';
 
+
+  /**
+   * on init handle the animation state
+   */
   public ngOnInit(): void {
     setTimeout(() => {
       this.animationState = 'in';
     }, 100);
   }
 
-  public onInput(event: any, nextInput: number): void {
-    const inputElement = event.target;
+  /**
+   * handle the input event and move to the next input or previous input
+   * @param event event object
+   * @param nextInput current input index
+   */
+  public onInput(event: Event, nextInput: number): void {
+    // Get the current input value
+    const inputElement : EventTarget | null = event.target;
+    
+    if(inputElement instanceof HTMLInputElement) {
     const currentInputValue = inputElement.value;
-
+  
     let nextInputId: string = '';
     let nextInputElement: HTMLInputElement;
 
@@ -73,6 +85,12 @@ export class SignUpConfirmDialogComponent {
       nextInputElement.focus();
     }
   }
+}
+
+  /**
+   * check if the confirm code is filled
+   * @returns true if the confirm code is filled
+   */
   public isFilled(): boolean {
     if (this.confirmCode.join('').length === 6) {
       return true;

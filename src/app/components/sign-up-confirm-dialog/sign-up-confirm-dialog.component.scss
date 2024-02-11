@@ -13,7 +13,7 @@
   justify-content: center;
   display: grid;
   position: relative;
-  top: -150px;
+  top: -140px;
   grid-template-rows: 1fr 1.2fr 2fr;
   overflow: hidden;
 }
@@ -27,8 +27,8 @@
 
 .title-container{
   position: relative;
-
   text-align: center;
+  top: 10px;
   h1{
     font: 24px;
     font-weight: bold;
@@ -47,7 +47,7 @@
 
 .input-container{
   position: relative;
-  top: -80px;
+  top: -110px;
   display: grid;
   h3{
     font-size: 14px;
@@ -93,8 +93,8 @@
 
 .confirm-button{
   position: relative;
-  top: -300px;
-  left: 430px;
+  top: -310px;
+  left: 410px;
   justify-content: center;
   align-items: center;
   display: grid;
