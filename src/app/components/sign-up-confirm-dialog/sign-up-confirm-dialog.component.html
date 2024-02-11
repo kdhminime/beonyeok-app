@@ -1,12 +1,54 @@
 <div class="container">
   <div class="content-container">
-    <div class="title-container">
-      <h1>Create your account</h1>
+    <div class="image-container">
+      <app-logo-image></app-logo-image>
     </div>
-    <div class="input-container">
-      <h3>Confirmation Code</h3>
-      <input [(ngModel)]="confirmationCode" />
+    <div class="title-container" [@slideInOut]="animationState">
+      <h1>Confirm your Email</h1>
+      <p>I already have an account. <a>Log in</a></p>
+    </div>
+    <div class="input-container" [@slideInOut]="animationState">
+      <h3>Verify code</h3>
+      <div>
+        <input
+          (input)="onInput($event, 1)"
+          [(ngModel)]="input1"
+          maxlength="1"
+          id="input1"
+        />
+        <input
+          (input)="onInput($event, 2)"
+          [(ngModel)]="input2"
+          maxlength="1"
+          id="input2"
+        />
+        <input
+          (input)="onInput($event, 3)"
+          [(ngModel)]="input3"
+          maxlength="1"
+          id="input3"
+        />
+        <input
+          (input)="onInput($event, 4)"
+          [(ngModel)]="input4"
+          maxlength="1"
+          id="input4"
+        />
+        <input
+          (input)="onInput($event, 5)"
+          [(ngModel)]="input5"
+          maxlength="1"
+          id="input5"
+        />
+        <input
+          (input)="onInput($event, 6)"
+          [(ngModel)]="input6"
+          maxlength="1"
+          id="input6"
+        />
+      </div>
+      <h4>You couldn’t get any Email from us?<a>Resend the code.</a></h4>
     </div>
   </div>
-  <button class="confirm-button">Confirm</button>
+  <button class="confirm-button" >Confirm</button>
 </div>

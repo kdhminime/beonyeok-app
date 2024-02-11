@@ -1,6 +1,6 @@
 .container {
   width: 565px;
-  height: 628px;
+  height: 458px;
   background-color: white;
   border-radius: 14px;
   box-shadow: 5px 4px 13.4px 0px rgba(0, 0, 0, 0.25);
@@ -13,18 +13,35 @@
   justify-content: center;
   display: grid;
   position: relative;
-  top: -100px;
-  grid-template-rows: 1fr 1.2fr 1.5fr 1fr;
+  top: -150px;
+  grid-template-rows: 1fr 1.2fr 2fr;
+  overflow: hidden;
+}
 
+.image-container{
+  position: relative;
+  top: 10px;
+  justify-content: center;
+  display: grid;
 }
 
 .title-container{
   position: relative;
-  top: -30px;
+
   text-align: center;
   h1{
     font: 24px;
     font-weight: bold;
+  }
+  p{
+    margin-top: -10px;
+    color: #7D7D7D;
+    font-size: 11px;
+  }
+  a{
+    color: #0B8AFF;
+    cursor: pointer;
+    text-decoration: underline;
   }
 }
 
@@ -35,24 +52,49 @@
   h3{
     font-size: 14px;
     font-weight: bold;
+    margin-bottom: -60px;
+    left: -15px;
+    position: relative;
   }
   input{
-    width: 501px;
-    height: 33px;
+    width: 50px;
+    height: 84px;
     border-radius: 9px;
     background-color: rgb(242, 242, 242, 0);
     border: 2px solid #E3E3E3;
-    margin-top: -20px;
-    outline: none;
+    position: relative;
     padding-left: 10px;
+    font-size: 64px;
+    margin: 5px;
+    top : 5px;
+    text-align: center;
+  }
+  h3{
+    top:15px;
+    position: relative;
+  }
+  h4{
     font-size: 16px;
+    font-weight: lighter;
+    color: #7D7D7D;
+    top: -60px;
+    left: 60px;
+    position: relative;
+  }
+  a{
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: lighter;
+    color: #7D7D7D;
+    cursor: pointer;
+    text-decoration: underline;
   }
 }
 
 
 .confirm-button{
   position: relative;
-  top: -130px;
+  top: -300px;
   left: 430px;
   justify-content: center;
   align-items: center;
