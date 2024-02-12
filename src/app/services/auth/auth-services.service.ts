@@ -66,7 +66,7 @@ export class AuthServicesService {
   async handleSignUpConfirmation({
     username,
     confirmationCode,
-  }: ConfirmSignUpInput) : Promise<void> {
+  }: ConfirmSignUpInput) : Promise<boolean> {
     try {
       const { isSignUpComplete, nextStep } = await confirmSignUp({
         username,
@@ -74,8 +74,10 @@ export class AuthServicesService {
       });
       // handle sign-up confirmation steps
       console.log('sign up complete:', isSignUpComplete, 'next step:', nextStep);
+      return isSignUpComplete;
     } catch (error) {
       console.log('error confirming sign up', error);
+      return false;
     }
   }
 

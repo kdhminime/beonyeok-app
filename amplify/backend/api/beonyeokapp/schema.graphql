@@ -1,0 +1,19 @@
+type Script @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  sequenceNumber: Int!
+  originalText: String!
+  translatedText: String!
+  projectID: ID! @index(name: "byProject")
+}
+
+type Project @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userId: ID!
+  title: String!
+  type: String!
+  translatedLanguage: String!
+  startedDate: AWSDateTime!
+  updatedDate: AWSDateTime!
+  Scripts: [Script] @hasMany(indexName: "byProject", fields: ["id"])
+  originalLanguage: String!
+}

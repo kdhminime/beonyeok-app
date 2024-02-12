@@ -10,6 +10,9 @@ import { SignUpConfirmDialogComponent } from './components/sign-up-confirm-dialo
 import { AuthServicesService } from './services/auth/auth-services.service';
 import { DialogService } from './services/dialog/dialog.service';
 
+// Import constants
+import { dialogNames } from './constants/dialog-names';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -29,7 +32,7 @@ export class AppComponent  {
   ) {}
 
   ngOnInit(): void {
-    this.dialogService.openDialog('signUpDialog');
+    this.dialogService.openDialog(dialogNames.signUpDialog);
   }
 
   isLoading: boolean = false;

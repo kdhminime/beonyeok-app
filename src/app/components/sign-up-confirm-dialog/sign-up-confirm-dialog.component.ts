@@ -19,6 +19,9 @@ import { AuthServicesService } from '../../services/auth/auth-services.service';
 // import models
 import { SignUpConfirmationInputModel } from '../../models/SignupModel';
 
+// import constants
+import { dialogNames } from '../../constants/dialog-names';
+
 @Component({
   selector: 'app-sign-up-confirm-dialog',
   standalone: true,
@@ -132,6 +135,9 @@ export class SignUpConfirmDialogComponent {
       username: this.authService.email,
       confirmationCode,
     };
-    await this.authService.handleSignUpConfirmation(ConfirmSignUpInput);
+    const response : boolean = await this.authService.handleSignUpConfirmation(ConfirmSignUpInput);
+    if (response) {
+      this.dialogService.closeDialog(dialogNames.signUpConfirmDialog);
+    }
   }
 }

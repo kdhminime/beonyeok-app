@@ -19,6 +19,9 @@ import { LoaderComponent } from '../loader/loader.component';
 // Import models
 import { SignUpInputModel, SignUpOutputModel } from '../../models/SignupModel';
 
+// Import constants
+import { dialogNames } from '../../constants/dialog-names';
+
 @Component({
   selector: 'app-sign-up-dialog',
   standalone: true,
@@ -61,8 +64,6 @@ import { SignUpInputModel, SignUpOutputModel } from '../../models/SignupModel';
   ],
 })
 export class SignUpDialogComponent {
-  // dialog key
-  public dialogKey: string = 'signUpDialog';
 
   // authentication variables
   public email: string = '';
@@ -119,7 +120,7 @@ export class SignUpDialogComponent {
 
       setTimeout(() => {
         this.DialogService.openDialog('signUpConfirmDialog');
-        this.DialogService.closeDialog(this.dialogKey, null);
+        this.DialogService.closeDialog(dialogNames.signUpDialog, null);
         resolve();
       }, 1100);
     });
