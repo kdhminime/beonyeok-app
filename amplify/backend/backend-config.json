@@ -1,27 +1,5 @@
 {
   "api": {
-    "AdminQueries": {
-      "authorizationType": "AMAZON_COGNITO_USER_POOLS",
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "beonyeokapp"
-        },
-        {
-          "attributes": [
-            "Arn",
-            "Name"
-          ],
-          "category": "function",
-          "resourceName": "AdminQueriesbcb38b18"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    },
     "beonyeokapp": {
       "dependsOn": [],
       "output": {
@@ -48,79 +26,42 @@
     "beonyeokapp": {
       "customAuth": false,
       "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_NUMBERS",
-            "REQUIRES_UPPERCASE"
-          ],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      },
       "providerPlugin": "awscloudformation",
-      "service": "Cognito"
-    },
-    "userPoolGroups": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "beonyeokapp"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Cognito-UserPool-Groups"
+      "service": "Cognito",
+      "serviceType": "imported"
     }
   },
-  "function": {
-    "AdminQueriesbcb38b18": {
-      "build": true,
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "beonyeokapp"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
+  "function": {},
   "parameters": {
-    "AMPLIFY_function_AdminQueriesbcb38b18_deploymentBucketName": {
+    "AMPLIFY_auth_beonyeokapp_nativeClientId": {
       "usedBy": [
         {
-          "category": "function",
-          "resourceName": "AdminQueriesbcb38b18"
+          "category": "auth",
+          "resourceName": "beonyeokapp"
         }
       ]
     },
-    "AMPLIFY_function_AdminQueriesbcb38b18_s3Key": {
+    "AMPLIFY_auth_beonyeokapp_userPoolId": {
       "usedBy": [
         {
-          "category": "function",
-          "resourceName": "AdminQueriesbcb38b18"
+          "category": "auth",
+          "resourceName": "beonyeokapp"
+        }
+      ]
+    },
+    "AMPLIFY_auth_beonyeokapp_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "beonyeokapp"
+        }
+      ]
+    },
+    "AMPLIFY_auth_beonyeokapp_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "beonyeokapp"
         }
       ]
     }

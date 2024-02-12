@@ -104,10 +104,8 @@ export class SignUpConfirmDialogComponent {
   public onPaste(event: ClipboardEvent): void {
     if (event.clipboardData) {
       const paste : string = event.clipboardData.getData('text');
-      // check if the data is longer than 6
       const pasteArray : string[] = paste.split('');
       if (paste.length > 6) {
-        // remove the extra characters
         pasteArray.splice(6, pasteArray.length - 6);
       }
       for (let i = 0; i < pasteArray.length; i++) {
@@ -122,7 +120,8 @@ export class SignUpConfirmDialogComponent {
    * @returns true if the confirm code is filled
    */
   public isFilled(): boolean {
-    if (this.confirmCode.join('').length > 6) {
+    console.log('confirm code:', this.confirmCode.join(''));
+    if (this.confirmCode.join('').length === 6) {
       return true;
     } else {
       return false;
@@ -137,7 +136,11 @@ export class SignUpConfirmDialogComponent {
     };
     const response : boolean = await this.authService.handleSignUpConfirmation(ConfirmSignUpInput);
     if (response) {
+      this.authService.handleAutoSignIn();
       this.dialogService.closeDialog(dialogNames.signUpConfirmDialog);
+    }
+    else{
+      console.log('error confirming sign up');
     }
   }
 }

@@ -84,6 +84,7 @@ export class AuthServicesService {
   async handleAutoSignIn(): Promise<void> {
     try {
       const signInOutput = await autoSignIn();
+      console.log('auto sign in complete:', signInOutput);
       // handle sign-in steps
     } catch (error) {
       console.log(error);
@@ -101,6 +102,7 @@ export class AuthServicesService {
     password,
   }: SignInInputModel): Promise<SignInOutputModel | null> {
     try {
+      await this.handleSignOut();
       const { isSignedIn, nextStep } = await signIn({ username, password });
       return { isSignedIn, nextStep };
     } catch (error) {

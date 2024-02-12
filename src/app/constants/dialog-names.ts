@@ -3,4 +3,5 @@
 export const dialogNames = {
   signUpDialog: 'signUpDialog',
   signUpConfirmDialog: 'signUpConfirmDialog',
+  signInDialog: 'signInDialog',
 }
