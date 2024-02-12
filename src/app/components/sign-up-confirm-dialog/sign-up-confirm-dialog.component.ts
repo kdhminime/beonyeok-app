@@ -101,7 +101,12 @@ export class SignUpConfirmDialogComponent {
   public onPaste(event: ClipboardEvent): void {
     if (event.clipboardData) {
       const paste : string = event.clipboardData.getData('text');
+      // check if the data is longer than 6
       const pasteArray : string[] = paste.split('');
+      if (paste.length > 6) {
+        // remove the extra characters
+        pasteArray.splice(6, pasteArray.length - 6);
+      }
       for (let i = 0; i < pasteArray.length; i++) {
         this.confirmCode[i] = pasteArray[i];
       }
@@ -114,7 +119,7 @@ export class SignUpConfirmDialogComponent {
    * @returns true if the confirm code is filled
    */
   public isFilled(): boolean {
-    if (this.confirmCode.join('').length === 6) {
+    if (this.confirmCode.join('').length > 6) {
       return true;
     } else {
       return false;
