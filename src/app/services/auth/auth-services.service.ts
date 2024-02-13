@@ -114,6 +114,7 @@ export class AuthServicesService {
 
   /**
    * Get the current user
+   * @returns a promise of the boolean value of the user's sign in status
    */
   async isSignedIn() : Promise<boolean> {
     try {
@@ -125,4 +126,5 @@ export class AuthServicesService {
       return false;
     }
   }
+  
 }

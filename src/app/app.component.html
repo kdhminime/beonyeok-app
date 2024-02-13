@@ -14,4 +14,9 @@
       *ngIf="dialogService.dialogStates$ | async as dialogState"
     ></app-sign-in-dialog>
   </div>
+  <div *ngIf="dialogStates['projectSelector']" class="overlay">
+    <app-project-selection
+      *ngIf="dialogService.dialogStates$ | async as dialogState"
+    ></app-project-selection>
+  </div>
 </ng-container>

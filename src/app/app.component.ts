@@ -6,6 +6,7 @@ import { RouterOutlet } from '@angular/router';
 import { SignUpDialogComponent } from './components/sign-up-dialog/sign-up-dialog.component';
 import { SignUpConfirmDialogComponent } from './components/sign-up-confirm-dialog/sign-up-confirm-dialog.component';
 import { LogInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
+import { ProjectSelectionComponent } from './components/project-selection/project-selection.component';
 
 // Import services
 import { AuthServicesService } from './services/auth/auth-services.service';
@@ -23,6 +24,7 @@ import { dialogNames } from './constants/dialog-names';
     SignUpDialogComponent,
     SignUpConfirmDialogComponent,
     LogInDialogComponent,
+    ProjectSelectionComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -30,10 +32,13 @@ import { dialogNames } from './constants/dialog-names';
 export class AppComponent  {
   constructor(
     public dialogService: DialogService,
-    public authService: AuthServicesService
-  ) {}
+    public authService: AuthServicesService,
+  ) {
+    
+  }
 
   public async ngOnInit(): Promise<void> {
+    this.authService.handleSignOut();
     // check if the user is signed in
     const isSignedIn = await this.authService.isSignedIn();
     if (isSignedIn) {

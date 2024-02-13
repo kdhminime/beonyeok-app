@@ -146,6 +146,7 @@ export class SignUpConfirmDialogComponent {
     if (response) {
       this.authService.handleAutoSignIn();
       this.dialogService.closeDialog(dialogNames.signUpConfirmDialog);
+      this.dialogService.openDialog(dialogNames.projectSelection);
     }
     else{
       console.log('error confirming sign up');
