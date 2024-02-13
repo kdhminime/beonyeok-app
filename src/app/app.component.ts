@@ -41,7 +41,7 @@ export class AppComponent  {
     // check if the user is signed in
     const isSignedIn = await this.authService.isSignedIn();
     if (isSignedIn) {
-      console.log('user is signed in');
+      this.dialogService.openDialog(dialogNames.projectSelection);
     }
     else{
       this.dialogService.openDialog(dialogNames.signInDialog);

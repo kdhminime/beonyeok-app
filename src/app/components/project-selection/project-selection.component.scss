@@ -1,0 +1,83 @@
+.container {
+  height: 751px;
+  width: 1161px;
+  background-color: white;
+  border-radius: 14px;
+  box-shadow: 5px 4px 13.4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.content-container{
+  height: 751px;
+  width: 1161px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider{
+  width: 1110px;
+  height: 2px;
+  background-color: #bcbcbc;
+  margin-top: -50px;
+}
+
+.title-container{
+  h1{
+    font-size: 32px;
+    font-weight: bold;
+  }
+}
+
+.project-container{
+  width: 1110px;
+  height: 485px;
+  background-color: #f2f2f2;
+  border-radius: 9px;
+}
+
+.import-button{
+  align-items: center;
+  width: 96px;
+  height: 38px;
+  border: 0px;
+  border-radius: 7px;
+  background-color: #FF9F10;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  left: 1010px;
+}
+
+.import-button:hover{
+  background-color: #FFB24D;
+}
+
+.import-button:active{
+  background-color: #FF9F10;
+}
+
+.new-button{
+  align-items: center;
+  display: grid;
+  width: 96px;
+  height: 38px;
+  border: 0px;
+  border-radius: 7px;
+  background-color: #FF9F10;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  margin-top: -20px;
+}
+
+.new-button:hover{
+  background-color: #FFB24D;
+}
+
+.new-button:active{
+  background-color: #FF9F10;
+}
