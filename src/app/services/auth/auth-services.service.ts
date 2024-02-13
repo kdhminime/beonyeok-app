@@ -7,6 +7,7 @@ import { confirmSignUp, type ConfirmSignUpInput } from 'aws-amplify/auth';
 import { autoSignIn } from 'aws-amplify/auth';
 import { signIn } from 'aws-amplify/auth';
 import { signOut } from 'aws-amplify/auth';
+import { getCurrentUser } from 'aws-amplify/auth';
 
 // Import models
 import {
@@ -34,17 +35,7 @@ export class AuthServicesService {
     {
       let signUpOutput: SignUpOutputModel = {} as SignUpOutputModel;
       try {
-        signUpOutput = await signUp({
-          username: signUpInput.username,
-          password: signUpInput.password,
-          options: {
-            userAttributes: {
-              email: signUpInput.email,
-            },
-            // optional
-            autoSignIn: true, // or SignInOptions e.g { authFlowType: "USER_SRP_AUTH" }
-          },
-        });
+        signUpOutput = await signUp(signUpInput);
         console.log(
           'sign up complete: userId:',
           signUpOutput.userId,
@@ -118,6 +109,20 @@ export class AuthServicesService {
       await signOut();
     } catch (error) {
       console.log('error signing out: ', error);
+    }
+  }
+
+  /**
+   * Get the current user
+   */
+  async isSignedIn() : Promise<boolean> {
+    try {
+      const user = await getCurrentUser();
+      console.log('current user:', user);
+      return true;
+    } catch (error) {
+      console.log('error getting current user:', error);
+      return false;
     }
   }
 }

@@ -85,9 +85,14 @@ export class SignUpDialogComponent {
   public async signUp(): Promise<void> {
     // build the sign up input
     const signUpInput: SignUpInputModel = {
-      email: this.email,
-      password: this.password,
       username: this.email,
+      password: this.password,
+      options:{
+        userAttributes:{
+          email: this.email
+        },
+        autoSignIn: true
+      }
     };
 
     try{

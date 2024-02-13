@@ -10,9 +10,7 @@ import {
 /**
  * Interface for the sign up parameters
  */
-export interface SignUpInputModel extends SignUpInput {
-  email: string;
-}
+export interface SignUpInputModel extends SignUpInput {}
 
 /**
  * Interface for the sign up response

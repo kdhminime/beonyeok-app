@@ -10,8 +10,8 @@
     ></app-sign-up-confirm-dialog>
   </div>
   <div *ngIf="dialogStates['signInDialog']" class="overlay">
-    <app-log-in-dialog
+    <app-sign-in-dialog
       *ngIf="dialogService.dialogStates$ | async as dialogState"
-    ></app-log-in-dialog>
+    ></app-sign-in-dialog>
   </div>
 </ng-container>

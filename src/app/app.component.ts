@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 // Import components
 import { SignUpDialogComponent } from './components/sign-up-dialog/sign-up-dialog.component';
 import { SignUpConfirmDialogComponent } from './components/sign-up-confirm-dialog/sign-up-confirm-dialog.component';
-import { LogInDialogComponent } from './components/log-in-dialog/log-in-dialog.component';
+import { LogInDialogComponent } from './components/sign-in-dialog/sign-in-dialog.component';
 
 // Import services
 import { AuthServicesService } from './services/auth/auth-services.service';
@@ -33,9 +33,14 @@ export class AppComponent  {
     public authService: AuthServicesService
   ) {}
 
-  ngOnInit(): void {
-    this.dialogService.openDialog(dialogNames.signInDialog);
+  public async ngOnInit(): Promise<void> {
+    // check if the user is signed in
+    const isSignedIn = await this.authService.isSignedIn();
+    if (isSignedIn) {
+      console.log('user is signed in');
+    }
+    else{
+      this.dialogService.openDialog(dialogNames.signInDialog);
+    }
   }
-
-  isLoading: boolean = false;
 }

@@ -13,11 +13,11 @@ import { LogoImageComponent } from '../logo-image/logo-image.component';
 import { dialogNames } from '../../constants/dialog-names';
 
 @Component({
-  selector: 'app-log-in-dialog',
+  selector: 'app-sign-in-dialog',
   standalone: true,
   imports: [FormsModule, LogoImageComponent],
-  templateUrl: './log-in-dialog.component.html',
-  styleUrl: './log-in-dialog.component.scss',
+  templateUrl: './sign-in-dialog.component.html',
+  styleUrl: './sign-in-dialog.component.scss',
 })
 export class LogInDialogComponent {
   // authentication variables
@@ -53,5 +53,13 @@ export class LogInDialogComponent {
     } catch (error) {
       console.log('error signing in:', error);
     }
+  }
+
+  /**
+   * public openSignUpDialog
+   */
+  public openSignUpDialog(): void {
+    this.DialogService.openDialog(dialogNames.signUpDialog);
+    this.DialogService.closeDialog(dialogNames.signInDialog, null);
   }
 }

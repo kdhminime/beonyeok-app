@@ -111,6 +111,14 @@ export class SignUpConfirmDialogComponent {
       for (let i = 0; i < pasteArray.length; i++) {
         this.confirmCode[i] = pasteArray[i];
       }
+      const nextInputId = `input${pasteArray.length}`;
+      const nextInputElement = document.getElementById(
+        nextInputId
+      ) as HTMLInputElement;
+
+      if (nextInputElement) {
+        nextInputElement.focus();
+      }
     }
   }
 
