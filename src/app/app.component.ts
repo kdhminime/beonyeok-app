@@ -38,7 +38,6 @@ export class AppComponent  {
   }
 
   public async ngOnInit(): Promise<void> {
-    this.authService.handleSignOut();
     // check if the user is signed in
     const isSignedIn = await this.authService.isSignedIn();
     if (isSignedIn) {
